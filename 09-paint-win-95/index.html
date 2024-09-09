@@ -77,7 +77,53 @@
         "aside main main"
         "footer footer footer";
     }
-
+    /*Options menu*/
+    .menu-options{
+      position:fixed;
+      display:none;
+      background-color:#f0f0f0;
+      border:1px solid #808080;
+      font-family: Times New Roman, Times, serif;
+      font-size: 12pt;
+    }
+    .menu-options table{
+      /*So that the edges are glued*/
+      border-spacing: 0px;
+      border-collapse: separate;
+      min-width:288px;
+      min-height:40px;
+      overflow-x:hidden;
+      overflow-y:auto;
+    }
+    .menu-options table tr td{
+      overflow:hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-indent:0.4em;
+    }
+    /*Vertical Options Separator*/
+    .menu-options .separator-start{
+      border-top: 1px solid #c2c0c0;
+    }
+    .menu-options .separator-end{
+      border-bottom: 1px solid #ffffff;
+    }
+    /*Only room to wander around*/
+    .menu-options table tr td:nth-child(1){
+      min-width:10px;
+      max-width:10px;
+      border-right:1px solid #c2c0c0;
+      border-left:0px solid #0000 !important;
+      border-bottom: 1px solid rgba(0,0,0,0);
+      border-top: 1px solid rgba(0,0,0,0);
+    }
+    .menu-options table tr td:nth-child(2){
+      width:75%;
+      border-left:1px solid white;
+    }
+    .menu-options table tr td:nth-child(3){
+      text-align: right;
+    }
     aside {
       background: silver;
       grid-area: aside;
@@ -344,6 +390,50 @@
 
     ctx.lineJoin = 'round'
     ctx.lineCap = 'round'
+    
+    // Window functionality
+    var languaje="en";// If one day you decide to use different languages.
+    const MENU_HEADER={
+      "file":{"en":"File","es":"Archivo"},
+      "edit":{"en":"Edit","es":"Edición"},
+      "view":{"en":"Image","es":"Imagen"},
+      "options":{"en":"Options","es":"Opciones"},
+      "help":{"en":"Help","es":"Ayuda"}
+    };
+    function header_add_event(node_out){
+      // If you change the language, you empty out the ones that are already there.
+      node_out.innerHTML="";
+      for (let opt in MENU_HEADER){
+        let btn_child=document.createElement("button");
+        btn_child.innerHTML=MENU_HEADER[opt][languaje];
+
+        btn_child[0]=`<em><u>${btn_child[0]}</u></em>${btn_child.substring(1)}`;
+        btn_child.addEventListener("click",()=>{
+          openMenuOpt(MENU_HEADER[opt][languaje]);
+        });
+        node_out.appendChild(btn_child);
+      }
+    }
+    function openMenuOpt(str_opt){
+      switch (str_opt){
+        case MENU_HEADER["file"][languaje]:
+          break;
+        case MENU_HEADER["edit"]:
+          break;
+        case MENU_HEADER["view"][languaje]:
+          break;
+        case MENU_HEADER["options"][languaje]:
+          break;
+        case MENU_HEADER["help"][languaje]:
+          break;
+        default:
+          throw {
+            "Message":"Option not available",
+            "Value":str_opt,
+            "Function":"openMenuOpt"
+          };
+      }
+    }
   </script>
 </head>
 
@@ -354,15 +444,12 @@
   </h1>
 
   <div id="container">
-    <header>
-      <button>File</button>
-      <button>Edit</button>
-      <button>View</button>
-      <button>Image</button>
-      <button>Options</button>
-      <button>Help</button>
-    </header>
+    <div class="menu-options">
 
+    </div>
+    <header onload="header_add_event(this);">
+      <!--Buttons generated with javascript-->
+    </header>
     <aside>
       <nav>
         <button id="draw-btn" title="Pincel"></button>
