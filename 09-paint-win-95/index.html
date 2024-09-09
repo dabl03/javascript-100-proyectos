@@ -102,11 +102,11 @@
       text-indent:0.4em;
     }
     /*Vertical Options Separator*/
-    .menu-options .separator-start{
-      border-top: 1px solid #c2c0c0;
+    .menu-options .separator-top{
+      border-top: 1px solid white;
     }
-    .menu-options .separator-end{
-      border-bottom: 1px solid #ffffff;
+    .menu-options .separator-bottom{
+      border-bottom: 1px solid #c2c0c0;
     }
     /*Only room to wander around*/
     .menu-options table tr td:nth-child(1){
@@ -405,11 +405,11 @@
       node_out.innerHTML="";
       for (let opt in MENU_HEADER){
         let btn_child=document.createElement("button");
-        btn_child.innerHTML=MENU_HEADER[opt][languaje];
+        let text_out=MENU_HEADER[opt][languaje];
 
-        btn_child[0]=`<em><u>${btn_child[0]}</u></em>${btn_child.substring(1)}`;
+        btn_child.innerHTML=`<em><u>${text_out[0]}</u></em>${text_out.substring(1)}`;
         btn_child.addEventListener("click",()=>{
-          openMenuOpt(MENU_HEADER[opt][languaje]);
+          openMenuOpt(text_out);
         });
         node_out.appendChild(btn_child);
       }
@@ -418,7 +418,7 @@
       switch (str_opt){
         case MENU_HEADER["file"][languaje]:
           break;
-        case MENU_HEADER["edit"]:
+        case MENU_HEADER["edit"][languaje]:
           break;
         case MENU_HEADER["view"][languaje]:
           break;
@@ -434,6 +434,7 @@
           };
       }
     }
+    window.onload=()=>{header_add_event(document.getElementById("main-header"))};
   </script>
 </head>
 
@@ -444,10 +445,27 @@
   </h1>
 
   <div id="container">
-    <div class="menu-options">
-
+  <!--Template that i will use later to create the menu-- >
+      <div class="menu-options" style="display:block !important">
+      <table><tbody>
+        <tr>
+          <td><!--Don`t remove-- ></td>
+          <td>Comando simple para win...</td>
+          <td>Ctrl+2</td>
+        <tr>
+          <td><!--Don´t remove-- ></td>
+          <td class="separator-bottom">Comando simple para win...</td>
+          <td class="separator-bottom">Ctrl+2</td>
+        <tr>
+           <tr>
+          <td><!--Don`t remove-- ></td>
+          <td class="separator-top">Comando simple para win...</td>
+          <td class="separator-top">Ctrl+2</td>
+          <tr>
+      </tbody></table>
     </div>
-    <header onload="header_add_event(this);">
+    -->
+    <header id="main-header">
       <!--Buttons generated with javascript-->
     </header>
     <aside>
