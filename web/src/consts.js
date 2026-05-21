@@ -125,4 +125,60 @@ export const PROJECTS = [
     },
     youtube: 'https://www.youtube.com/watch?v=-0UYMmplimA'
   },
+  {
+    slug: "10-stack-game",
+    title: "Stack Game",
+    description: "Juego donde hay que apilar las piezas verticalmente",
+    learnings: [
+      "Canvas",
+      "Lógica de programación",
+      "Eventos de teclado"
+    ],
+    theme: {
+      isDark: true
+    },
+    youtube: 'https://www.youtube.com/watch?v=IEwL-TZBeqQ'
+  },
+  {
+    slug: "11-js-perf-benchmark",
+    title: "JS Perf Benchmark",
+    description: "App para revisar el rendimiento de tu código JavaScript",
+    learnings: [
+      "Web Workers",
+      "Eval",
+      "Promises"
+    ],
+    theme: {
+      isDark: true
+    },
+    youtube: 'https://www.youtube.com/watch?v=VuOcLnzhbDw'
+  },
+  {
+    slug: "12-moto-scroll",
+    title: "Animación por Scroll",
+    description: "Anima el fondo de una web a través del scroll",
+    learnings: [
+      "Scroll",
+      "Animaciones",
+      "Performance"
+    ],
+    theme: {
+      isDark: true
+    },
+    youtube: 'https://www.youtube.com/watch?v=8EA-WNFMYwI'
+  },
+  {
+    slug: "13-google-translate",
+    title: "Google Translate",
+    description: "Crea tu propio traductor de Google con HTML, CSS y JavaScript",
+    learnings: [
+      "IA local",
+      "Reconocimiento de voz",
+      "SpeechSynthesis"
+    ],
+    theme: {
+      isDark: false
+    },
+    youtube: 'https://www.youtube.com/watch?v=n1LzTu2-rr0'
+  }
 ]
